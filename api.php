@@ -9,11 +9,11 @@ switch ($requestMethod) {
         if (isset($_GET['id'])) {
             $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ?");
             $stmt->execute([$_GET['id']]);
-            $book = $stmt->fetch(PDO::FETCH_ASSOC); // Use FETCH_ASSOC here
+            $book = $stmt->fetch(PDO::FETCH_ASSOC); 
             echo json_encode($book ? $book : ["message" => "Book not found"]);
         } else {
             $stmt = $pdo->query("SELECT * FROM books");
-            $books = $stmt->fetchAll(PDO::FETCH_ASSOC); // Use FETCH_ASSOC here
+            $books = $stmt->fetchAll(PDO::FETCH_ASSOC); 
             echo json_encode($books);
         }
         break;
